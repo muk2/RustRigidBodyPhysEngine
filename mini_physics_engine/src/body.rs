@@ -54,6 +54,13 @@ impl World {
             body.apply_force(g_force);
             body.integrate(dt);
             // note: body.integrate resets forces for next frame
+
+            let ground_y = 0.0;
+            if body.position.y < ground_y{
+                body.position.y = ground_y;
+
+                body.velocity.y *= -0.5;
+            }
         }
     }
 }
